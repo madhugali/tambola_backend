@@ -10,7 +10,7 @@ public class StartGame {
     public static void main(String[] args) {
         List<WinningScenarios> scenarios = Arrays
                 .asList(new JaldiFive(), new FirstRow(), new SecondRow(), new ThirdRow());
-        Game game = new Game(new ManualTicketService(3, 3), scenarios);
+        Game game = new Game(new ManualTicketService(3, 9), scenarios);
         game.play();
     }
 
