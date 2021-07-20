@@ -103,5 +103,4 @@ public class AutoTicketCreationService implements TicketService {
         return IntStream.rangeClosed(statIndex, endIndex).boxed().collect(Collectors.toList());
     }
 
-
 }

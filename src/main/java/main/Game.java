@@ -25,6 +25,17 @@ public class Game {
         Ticket ticket = this.ticketService.generateTicket();
         ticket.printTicket();
 
+        String gameStatus = beginGame(ticket);
+        if (gameStatus.equalsIgnoreCase("n")) {
+            System.out.println("Press g to start a new game! or press any key to exit");
+            String userIp = scanner.next();
+            if (userIp.equalsIgnoreCase("g")) {
+                play();
+            }
+        }
+    }
+
+    private String beginGame(Ticket ticket) {
         String userInput = "y";
         while (userInput.equalsIgnoreCase("y")) {
             System.out.println("Enter announced number! or type n to quit the game");
@@ -38,13 +49,15 @@ public class Game {
                         .stream()
                         .map(e1 -> e1.checkIfWon(ticket)).collect(Collectors.toList());
                 Optional<Boolean> hasAnyWinningFailed = winningsStatus.stream().filter(e1 -> !e1).findFirst();
-                if (!hasAnyWinningFailed.isPresent())
+                if (!hasAnyWinningFailed.isPresent()) {
                     System.out.println("Congratulations you have won the Housie");
-
+                    userInput = "n";
+                }
             } else if (numInput.equalsIgnoreCase("n")) {
                 userInput = numInput;
             }
         }
+        return userInput;
     }
 
 }

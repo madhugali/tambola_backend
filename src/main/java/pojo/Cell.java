@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class Cell {
 
-//    private int index;
-    private int val;
+    private Integer val;
     private boolean isAnnounced;
 
 }
