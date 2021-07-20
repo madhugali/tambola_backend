@@ -1,5 +1,3 @@
-package service;
-
 import pojo.Cell;
 import pojo.Ticket;
 
@@ -7,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class AutoTicketCreationService implements TicketService {
+public class Test {
 
     private final List<Integer> indexLs = constructRange(0, 8);
     private final List<Integer> zeroLs = constructRange(1, 9);
@@ -24,8 +22,12 @@ public class AutoTicketCreationService implements TicketService {
     private static final int ROW_SIZE = 3;
     private static final int COL_SIZE = 9;
 
-    @Override
-    public Ticket generateTicket() {
+    public static void main(String[] args) {
+        Test test = new Test();
+        test.process();
+    }
+
+    private void process() {
         Map<Integer, List<Integer>> rangeMap = constructRangeMap();
 
         Cell[][] cell = new Cell[ROW_SIZE][COL_SIZE];
@@ -43,13 +45,20 @@ public class AutoTicketCreationService implements TicketService {
                 cell[row][col] = new Cell(input, false);
             }
         }
-        return new Ticket(sortColumnsOfTicket(cell));
+
+        new Ticket(cell).printTicket();
+        new Ticket(sortColumnsOfTicket(cell)).printTicket();
     }
 
     private Cell[][] sortColumnsOfTicket(Cell[][] cell) {
         for (int col = 0; col < cell[1].length; col++) {
 
-            Cell[] cells = {cell[0][col], cell[1][col], cell[2][col]};
+            Cell row0 = cell[0][col];
+            Cell row1 = cell[1][col];
+            Cell row2 = cell[2][col];
+
+            Cell[] cells = {row0, row1, row2};
+
             for (int i = 0; i < cells.length; i++) {
                 for (int j = i + 1; j < cells.length; j++) {
 
@@ -102,6 +111,5 @@ public class AutoTicketCreationService implements TicketService {
     private List<Integer> constructRange(int statIndex, int endIndex) {
         return IntStream.rangeClosed(statIndex, endIndex).boxed().collect(Collectors.toList());
     }
-
 
 }

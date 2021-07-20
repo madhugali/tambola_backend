@@ -24,10 +24,7 @@ public class ManualTicketService implements TicketService {
             System.out.println("Enter row " + (row + 1) + " values");
             for (int col = 0; col < this.colSize; col++) {
                 scan = new Scanner(System.in);
-                String input = scan.nextLine();
-                if (input.isBlank())
-                    input = "-";
-
+                int input = scan.nextInt();
                 cell[row][col] = new Cell(input, false);
             }
         }

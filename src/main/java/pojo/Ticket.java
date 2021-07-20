@@ -19,16 +19,16 @@ public class Ticket {
         }
     }
 
-    public void markAnnouncedNumbers(String ip) {
+    public void markAnnouncedNumbers(int ip) {
         for (int row = 0; row < this.getCell().length; row++) {
             for (int col = 0; col < this.getCell()[1].length; col++) {
                 Cell cell = this.getCell()[row][col];
-                String cellVal = cell.getVal();
-                if (cellVal.equals(ip)) {
+                int cellVal = cell.getVal();
+                if (cellVal == ip) {
                     cell.setAnnounced(Boolean.TRUE);
-                    cell.setVal("!" + ip);
+                    cell.setVal(ip);
                     System.out.println("Marked number " + ip);
-                } else if (cellVal.equals("!" + ip)) {
+                } else if (cellVal == -ip) {
                     System.out.println(" Error, number " + ip + " is called twice!!");
                 }
             }

@@ -31,13 +31,12 @@ public class Game {
             String numInput = scanner.next();
 
             if (numInput.matches("^[0-9]*$")) {
-                ticket.markAnnouncedNumbers(numInput);
+                ticket.markAnnouncedNumbers(Integer.parseInt(numInput));
                 ticket.printTicket();
 
                 List<Boolean> winningsStatus = scenarios
                         .stream()
                         .map(e1 -> e1.checkIfWon(ticket)).collect(Collectors.toList());
-                ticket.printTicket();
                 Optional<Boolean> hasAnyWinningFailed = winningsStatus.stream().filter(e1 -> !e1).findFirst();
                 if (!hasAnyWinningFailed.isPresent())
                     System.out.println("Congratulations you have won the Housie");
