@@ -26,7 +26,7 @@ public class Ticket {
                 int cellVal = cell.getVal();
                 if (cellVal == ip) {
                     cell.setAnnounced(Boolean.TRUE);
-                    cell.setVal(ip);
+                    cell.setVal(-ip);
                     System.out.println("Marked number " + ip);
                 } else if (cellVal == -ip) {
                     System.out.println(" Error, number " + ip + " is called twice!!");

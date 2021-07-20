@@ -1,6 +1,6 @@
 package service;
 
-import contants.TambolaConstants;
+import constants.TambolaConstants;
 import pojo.Cell;
 import pojo.Ticket;
 
